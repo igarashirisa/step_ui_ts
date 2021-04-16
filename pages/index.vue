@@ -8,7 +8,7 @@
             フリガナのUI
           </div>
           <div class="form_input">
-            <input type="text" name="kana" placeholder="フリガナ" id="kana">
+            <KanaInput />
           </div>
         </div>
         <p class="form_text"></p>
@@ -54,15 +54,19 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import KanaInput from '@/components/atoms/KanaInput.vue'
 
-export default Vue.extend({})
+export default {
+  components: {
+    KanaInput,
+  }
+}
 </script>
 
 <style lang="scss">
 #main {
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 30px 0;
   width: 1020px;
 
   .form {
@@ -88,6 +92,8 @@ export default Vue.extend({})
 
     &_subTitle {
       padding: 3px 0;
+      display: flex;
+      align-items: center;
       width: 270px;
       font-weight: 600;
       color: #333;
@@ -95,14 +101,13 @@ export default Vue.extend({})
     }
 
     &_item {
-      margin-top: 10px;
-      padding: 10px 20px;
+      padding: 15px 20px;
       display: flex;
       border-bottom: dotted 1px #777;
     }
 
     &_text {
-      padding: 15px 20px;
+      padding: 10px 20px;
     }
   }
 }
