@@ -11,7 +11,7 @@ export default {
     },
     methods: {
         changeKana() {
-            this.kana.replace(/\s+/g, '')
+            this.kana = this.kana.replace(/\s+/g, '')
             if(this.kana.match(/^[ァ-ヶー　]+$/)) {
                 return
             } else if (this.kana.match(/^[ぁ-んー　]+$/)) {

@@ -11,7 +11,10 @@
             <KanaInput />
           </div>
         </div>
-        <p class="form_text"></p>
+        <p class="form_text">
+          ひらがなをカタカナ、半角を全角カナへ変換する処理。<br>
+          その他の文字種は削除する。
+        </p>
       </div>
       <div class="form_inner">
         <div class="form_item">
@@ -19,7 +22,7 @@
             郵便番号のUI
           </div>
           <div class="form_input">
-            <input type="tel" name="zip" placeholder="郵便番号" id="zip" maxlength="8">
+            <ZipInput />
           </div>
         </div>
         <p class="form_text">
@@ -55,10 +58,12 @@
 
 <script lang="ts">
 import KanaInput from '@/components/atoms/KanaInput.vue'
+import ZipInput from '~/components/atoms/ZipInput.vue'
 
 export default {
   components: {
     KanaInput,
+    ZipInput,
   }
 }
 </script>
