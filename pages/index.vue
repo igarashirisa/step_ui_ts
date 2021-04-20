@@ -26,20 +26,9 @@
           </div>
         </div>
         <p class="form_text">
-          主に郵便番号で使えるUI。<br>
-          全角を半角へ変換。ハイフンを取り除く。
+          郵便番号や電話番号で使えるUI。<br>
+          全角を半角へ変換。ハイフン、スペースを取り除く。
         </p>
-      </div>
-      <div class="form_inner">
-        <div class="form_item">
-          <div class="form_subTitle">
-            電話番号のUI
-          </div>
-          <div class="form_input">
-            <input type="tel" name="tel" placeholder="電話番号" id="tel" maxlength="13">
-          </div>
-        </div>
-        <p class="form_text"></p>
       </div>
       <div class="form_inner">
         <div class="form_item">
@@ -50,7 +39,9 @@
             <input type="text" name="mail" placeholder="メールアドレス" id="mail">
           </div>
         </div>
-        <p class="form_text"></p>
+        <p class="form_text">
+
+        </p>
       </div>
     </div>
   </div>
@@ -58,7 +49,7 @@
 
 <script lang="ts">
 import KanaInput from '@/components/atoms/KanaInput.vue'
-import ZipInput from '~/components/atoms/ZipInput.vue'
+import ZipInput from '@/components/atoms/ZipInput.vue'
 
 export default {
   components: {
