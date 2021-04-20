@@ -5,6 +5,19 @@
       <div class="form_inner">
         <div class="form_item">
           <div class="form_subTitle">
+            氏名のUI
+          </div>
+          <div class="form_input">
+            <KanjiInput />
+          </div>
+        </div>
+        <p class="form_text">
+          氏名を入力した際、フリガナに自動入力されるUI。
+        </p>
+      </div>
+      <div class="form_inner">
+        <div class="form_item">
+          <div class="form_subTitle">
             フリガナのUI
           </div>
           <div class="form_input">
@@ -12,7 +25,7 @@
           </div>
         </div>
         <p class="form_text">
-          ひらがなをカタカナ、半角を全角カナへ変換する処理。<br>
+          ひらがなをカタカナ、半角を全角カナへ変換するUI。<br>
           その他の文字種は削除する。
         </p>
       </div>
@@ -48,11 +61,13 @@
 </template>
 
 <script lang="ts">
+import KanjiInput from '@/components/atoms/KanjiInput.vue'
 import KanaInput from '@/components/atoms/KanaInput.vue'
 import ZipInput from '@/components/atoms/ZipInput.vue'
 
 export default {
   components: {
+    KanjiInput,
     KanaInput,
     ZipInput,
   }
