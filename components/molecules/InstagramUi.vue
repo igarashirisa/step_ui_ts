@@ -39,8 +39,9 @@
 
   &_item {
     margin-right: 9px;
+    width: 334px;
     height: 500px;
-    overflow: scroll;
+    overflow: hidden scroll;
 
     &:nth-child(3n) {
       margin-right: 0;
