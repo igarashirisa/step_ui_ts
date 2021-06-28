@@ -12,7 +12,7 @@
           </div>
         </div>
         <p class="form_text">
-          氏名を入力した際、フリガナに自動入力されるUI。
+          氏名を入力した際、フリガナに自動入力されるUI。(未実装)
         </p>
       </div>
       <div class="form_inner">
@@ -53,7 +53,7 @@
           </div>
         </div>
         <p class="form_text">
-
+          スペースを取り除く。（未実装）
         </p>
       </div>
     </div>
@@ -69,7 +69,7 @@ export default {
   components: {
     KanjiInput,
     KanaInput,
-    ZipInput,
+    ZipInput
   }
 }
 </script>
