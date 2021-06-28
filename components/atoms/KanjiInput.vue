@@ -9,7 +9,7 @@
   >
 </template>
 <script lang="ts">
-import jaconv from 'jaconv'
+import * as AutoKana from 'vanilla-autokana'
 export default {
   data () {
     return {
