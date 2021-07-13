@@ -8,11 +8,18 @@
             氏名のUI
           </div>
           <div class="form_input">
-            <KanjiInput />
+            <input
+              id="kanji"
+              v-model="kanji"
+              type="text"
+              name="kanji"
+              placeholder="漢字"
+              @input="changeKanji"
+            >
           </div>
         </div>
         <p class="form_text">
-          氏名を入力した際、フリガナに自動入力されるUI。(未実装)
+          文字を入力し、フリガナを自動入力させるUI。
         </p>
       </div>
       <div class="form_inner">
@@ -21,7 +28,14 @@
             フリガナのUI
           </div>
           <div class="form_input">
-            <KanaInput />
+            <input
+              id="kana"
+              v-model.trim="kana"
+              type="text"
+              name="kana"
+              placeholder="フリガナ"
+              @blur="changeKana()"
+            >
           </div>
         </div>
         <p class="form_text">
@@ -43,17 +57,17 @@
           全角を半角へ変換。ハイフン、スペースを取り除く。
         </p>
       </div>
-      <div class="form_inner">
+      <div class="form_inner" style="background: #e9e9e9;">
         <div class="form_item">
           <div class="form_subTitle">
             メールアドレスのUI
           </div>
           <div class="form_input">
-            <input type="text" name="mail" placeholder="メールアドレス" id="mail">
+            <input id="mail" type="text" name="mail" placeholder="メールアドレス">
           </div>
         </div>
         <p class="form_text">
-          スペースを取り除く。（未実装）
+          スペースを取り除く。ドメイン予測変換表示（未実装）
         </p>
       </div>
     </div>
@@ -61,15 +75,47 @@
 </template>
 
 <script lang="ts">
-import KanjiInput from '@/components/atoms/KanjiInput.vue'
-import KanaInput from '@/components/atoms/KanaInput.vue'
+import jaconv from 'jaconv'
+import * as AutoKana from 'vanilla-autokana'
 import ZipInput from '@/components/atoms/ZipInput.vue'
+
+let autokana: AutoKana.AutoKana
 
 export default {
   components: {
-    KanjiInput,
-    KanaInput,
     ZipInput
+  },
+  data () {
+    return {
+      kanji: '',
+      kana: '',
+      history: []
+    }
+  },
+  mounted () {
+    autokana = AutoKana.bind('#kanji', '#kana', { katakana: true })
+  },
+  methods: {
+    changeKanji () {
+      this.kana = autokana.getFurigana()
+    },
+    changeKana () {
+      this.kana = this.kana.replace(/\s+/g, '')
+      // eslint-disable-next-line no-irregular-whitespace
+      if (this.kana.match(/^[ァ-ヶー　]+$/)) {
+
+      // eslint-disable-next-line no-irregular-whitespace
+      } else if (this.kana.match(/^[ぁ-んー　]+$/)) {
+        // eslint-disable-next-line no-return-assign
+        return this.kana = jaconv.toKatakana(this.kana)
+      } else if (this.kana.match(/^[ｦ-ﾟ ]+$/)) {
+        // eslint-disable-next-line no-return-assign
+        return this.kana = jaconv.toZenKana(this.kana)
+      } else {
+        // eslint-disable-next-line no-return-assign
+        return this.kana = ''
+      }
+    }
   }
 }
 </script>
