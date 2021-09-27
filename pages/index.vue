@@ -57,17 +57,17 @@
           全角を半角へ変換。ハイフン、スペースを取り除く。
         </p>
       </div>
-      <div class="form_inner" style="background: #e9e9e9;">
+      <div class="form_inner">
         <div class="form_item">
           <div class="form_subTitle">
             メールアドレスのUI
           </div>
           <div class="form_input">
-            <input id="mail" type="text" name="mail" placeholder="メールアドレス">
+            <MailInput />
           </div>
         </div>
         <p class="form_text">
-          スペースを取り除く。ドメイン予測変換表示（未実装）
+          ドメイン入力補助機能
         </p>
       </div>
     </div>
@@ -78,12 +78,14 @@
 import jaconv from 'jaconv'
 import * as AutoKana from 'vanilla-autokana'
 import ZipInput from '@/components/atoms/ZipInput.vue'
+import MailInput from '@/components/atoms/MailInput.vue'
 
 let autokana: AutoKana.AutoKana
 
 export default {
   components: {
-    ZipInput
+    ZipInput,
+    MailInput
   },
   data () {
     return {
@@ -142,7 +144,6 @@ export default {
       margin: 0 auto 20px;
       border: 4px solid #ddd;
       border-radius: 3px;
-      overflow: hidden;
       width: 860px;
       background-color: #fff;
     }
