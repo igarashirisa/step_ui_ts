@@ -29,5 +29,8 @@ export default {
   -moz-appearance: none;
   appearance: none;
   box-sizing: border-box;
+  &:focus {
+    border: solid 2px #fb5322;
+  }
 }
 </style>
